@@ -28,48 +28,43 @@ However, the remaining flip-flops should be made ready to toggle only when all l
 
 **Procedure**
 
-1.Initialize the shift register to a known state (e.g., all zeros).
-    2.Input a bit serially into the shift register.
-    3.Shift the contents of the register one position to the right (or left).
-    4.Output the shifted bit from the last stage of the register.
-    5.Repeat steps 2-4 for each bit you want to input and shift
+/* write all the steps invloved */
+
 
 **PROGRAM**
 
-Program for flipflops and verify its truth table in quartus using Verilog programming.
 
-    module Verilog1(clk, sin, q);
-    input clk;
-    input sin;
-    output [3:0] q;
-    reg [3:0] q;
-    always @(posedge clk)
-    begin
-    q[0] <= sin;
-    q[1] <= q[0];
-    q[2] <= q[1];
-    q[3] <= q[2];
-    end
-    endmodule
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
 
-```
-Developed by: Suraj Sharma
+````
+module up(out,clk,rstn);
+input clk,rstn;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+if(!rstn)
+out<=0;
+else
+out <= out+1;
+end
+endmodule
+````
 
-RegisterNumber:212224050052
-```
+**RTL LOGIC UP COUNTER**
 
+<img width="1324" height="587" alt="image" src="https://github.com/user-attachments/assets/205f6082-b970-41dc-ad56-ada0c8da2d32" />
 
 
-**RTL LOGIC FOR SISO Shift Register**
 
-![exp10 rtl](https://github.com/user-attachments/assets/35a6590e-342e-4bc9-94c3-38e87c311d65)
+**TIMING DIAGRAM FOR IP COUNTER**
+
+<img width="1916" height="733" alt="image" src="https://github.com/user-attachments/assets/ebba92ac-2be0-4041-9cc9-24ab35314dc2" />
 
 
-**TIMING DIGRAMS FOR SISO Shift Register**
+**TRUTH TABLE**
 
-![WhatsApp Image 2024-12-14 at 21 43 22_940555cd](https://github.com/user-attachments/assets/06ec21aa-304b-431c-8cf3-a51bb75cd44d)
-
+<img width="544" height="275" alt="image" src="https://github.com/user-attachments/assets/a05b349f-0e9b-4f65-826f-62f4a8f068b6" />
 
 **RESULTS**
 
-Thus the SISO Shift Register is implemented using verilog and validated their functionality using their functional tables
+Hence a 4 bit synchronous up counter is implemented correctlyHence a 4 bit synchronous up counter is implemented correctly
